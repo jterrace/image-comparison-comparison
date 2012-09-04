@@ -60,6 +60,8 @@ def main():
         ax.set_title(algoname)
         if algoname == 'perceptualdiff':
             ax.yaxis.set_major_formatter(FuncFormatter(lambda v, pos: '%.0fK' % (v/1000.)))
+        elif algoname == 'PSNR':
+            plt.gca().invert_yaxis()
     
     plt.tight_layout()
     plt.savefig(os.path.join(CURDIR, 'run-comparison.pdf'))
