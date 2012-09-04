@@ -18,10 +18,10 @@ def main():
         algo_results = data['samples']
         run_results = data['run']
     
-    rc('font', size='18')
-    rc('font', family='sans-serif')
+    rc('font', size='6')
+    rc('font', family='serif')
     
-    fig = plt.figure(figsize=(11.5, 8))
+    fig = plt.figure(figsize=(4, 2))
     
     positions = numpy.arange(len(compare.COMPARISONS)) + 0.2
     bar_width = 0.6
@@ -33,7 +33,7 @@ def main():
         rects = ax.bar(positions, algodata, bar_width, color=color)
         ax.get_xaxis().set_visible(False)
         ax.set_title(algoname)
-        plt.ylim((0, max(algodata) * 1.14))
+        plt.ylim((0, max(algodata) * 1.16))
         
         def autolabel(rects):
             maxheight = max(rect.get_height() for rect in rects)
@@ -51,12 +51,12 @@ def main():
     
     colors = iter(['b', 'r', 'g', 'k', 'y', 'b', 'r', 'g'])
     markers = iter(['s', 'p', 'o', 'v', '^', 'h'])
-    fig = plt.figure(figsize=(11.5, 8))
+    fig = plt.figure(figsize=(4, 2))
     for i, (algoname, algodata) in enumerate(run_results.iteritems()):
         ax = fig.add_subplot(2, 2, i)
         color = next(colors)
         marker = next(markers)
-        ax.plot(range(len(algodata)), algodata, color=color, marker=marker, markersize=5, linewidth=1, markeredgewidth=0.2)
+        ax.plot(range(len(algodata)), algodata, color=color, marker=marker, markersize=2, linewidth=0.5, markeredgewidth=0.2)
         ax.set_title(algoname)
         if algoname == 'perceptualdiff':
             ax.yaxis.set_major_formatter(FuncFormatter(lambda v, pos: '%.0fK' % (v/1000.)))
