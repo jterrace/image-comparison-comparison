@@ -35,11 +35,13 @@ def main():
         ax.set_title(algoname)
         plt.ylim((0, max(algodata) * 1.16))
         
+        labels = ['M', 'C', 'I', 'B', 'J']
+        
         def autolabel(rects):
             maxheight = max(rect.get_height() for rect in rects)
             for i, rect in enumerate(rects):
                 height = rect.get_height()
-                plt.text(rect.get_x() + rect.get_width() / 2., height + 0.03 * maxheight, chr(i + 65),
+                plt.text(rect.get_x() + rect.get_width() / 2., height + 0.03 * maxheight, labels[i],
                         ha='center', va='bottom')
     
         autolabel(rects)
